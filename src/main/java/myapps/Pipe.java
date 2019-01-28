@@ -11,6 +11,8 @@ import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.KStream;
 
 public class Pipe {
+	private static String APPLICATION_ID = "streams-pipe";
+	private static String BOOTSTRAP_SERVERS = "52.10.194.165:9092";
 	public static void main(String[] args) throws Exception {
 		
 		final StreamsBuilder builder = new StreamsBuilder(); // create a topology builder
@@ -28,8 +30,8 @@ public class Pipe {
 		
 		//  construct the Streams client with the two components we have just constructed above
 		Properties props = new Properties();
-		props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-pipe");
-		props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "52.38.105.107:2181");    // assuming that the Kafka broker this application is talking to runs on local machine with port 9092
+		props.put(StreamsConfig.APPLICATION_ID_CONFIG, APPLICATION_ID);
+		props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);    // assuming that the Kafka broker this application is talking to runs on local machine with port 9092
 		props.put(StreamsConfig.STATE_DIR_CONFIG, "./tmp");
 		
 		props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
